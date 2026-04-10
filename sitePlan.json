@@ -1,0 +1,42 @@
+{
+  "businessName": "Deecollections",
+  "industry": "Restaurant and Fashion Retail",
+  "tone": "warm and inviting",
+  "tagline": "Where Great Food Meets Great Style",
+  "sections": [
+    {
+      "id": "hero",
+      "name": "Hero",
+      "copy": "Welcome to Deecollections – your one-stop destination in Port Harcourt for delicious meals and fashionable clothing. Experience the perfect blend of culinary excellence and stylish fashion all under one roof.",
+      "imagePrompt": "A vibrant, welcoming storefront in Port Harcourt, Nigeria showing a modern restaurant and boutique combined, with warm golden hour lighting, customers dining at elegant tables on one side and browsing trendy clothing displays on the other, professional photography, inviting atmosphere, Nigerian urban setting",
+      "layout": "centered"
+    },
+    {
+      "id": "about",
+      "name": "About Us",
+      "copy": "Deecollections is Port Harcourt's unique lifestyle destination that brings together two essentials – great food and great fashion. Located in the heart of Obio Akpor at No 24 Amaigbo Road, Mile 3 Diobu Ikokwu, we offer our customers a distinctive shopping and dining experience. Whether you're looking to enjoy a satisfying meal with family and friends or update your wardrobe with the latest fashion trends, Deecollections has you covered. Our restaurant serves a variety of delicious Nigerian and continental dishes prepared with fresh ingredients, while our clothing section features carefully curated fashion pieces for men, women, and children. We believe life is about enjoying the best of both worlds, and that's exactly what we deliver.",
+      "imagePrompt": "Interior shot of a stylish dual-concept space in Nigeria, one half showing a cozy restaurant with beautifully plated Nigerian dishes on wooden tables, the other half displaying organized clothing racks with colorful garments, warm ambient lighting, modern African decor elements, professional retail photography",
+      "layout": "split"
+    },
+    {
+      "id": "services",
+      "name": "What We Offer",
+      "copy": "**Restaurant Services**\n\nOur restaurant serves a delightful range of Nigerian favourites including jollof rice, pounded yam with assorted soups, grilled fish and chicken, as well as continental dishes. We cater to dine-in customers, takeaway orders, and special events. Every meal is prepared with care using quality ingredients to ensure your satisfaction.\n\n**Fashion Collection**\n\nOur clothing section features the latest trends in men's, women's, and children's fashion. From casual everyday wear to stylish outfits for special occasions, we stock quality pieces that suit the Nigerian lifestyle and climate. Whether you need corporate attire, traditional wear, or trendy streetwear, you'll find something perfect at Deecollections.\n\n**Special Events & Catering**\n\nWe also provide catering services for your parties, meetings, and special occasions. Contact us to discuss your event needs and let us make your celebration memorable.",
+      "imagePrompt": "A split composition showing delicious Nigerian food dishes beautifully plated – jollof rice, grilled chicken, assorted soups – on one side, and fashionable clothing items artfully arranged on the other side, bright and appetizing photography, professional product photography, Nigerian context, warm inviting colors",
+      "layout": "grid"
+    },
+    {
+      "id": "contact",
+      "name": "Visit Us Today",
+      "copy": "Ready to experience the best of food and fashion? Visit Deecollections today at our Port Harcourt location or get in touch with us.\n\n**Address:**\nNo 24 Amaigbo Road, Mile 3 Diobu Ikokwu\nObio Akpor, Port Harcourt\nRivers State, Nigeria\n\n**Phone:** +234 814 447 4065\n\n**Opening Hours:**\nMonday - Saturday: 9:00 AM - 8:00 PM\nSunday: 12:00 PM - 6:00 PM\n\nWhether you want to dine with us, shop for new outfits, or place a catering order, we're here to serve you. Call us or visit our store today – we look forward to welcoming you!",
+      "imagePrompt": "Welcoming exterior view of a Nigerian storefront at golden hour, clear signage reading 'Deecollections', customers entering through glass doors, vibrant Port Harcourt street scene, parked vehicles, tropical plants, warm evening lighting, professional commercial photography, inviting atmosphere",
+      "layout": "centered"
+    }
+  ],
+  "contact": {
+    "phone": "+234 814 447 4065",
+    "email": "info@deecollections.ng",
+    "address": "No 24 Amaigbo Road, Mile 3 Diobu Ikokwu, Obio Akpor, Port Harcourt, Rivers State, Nigeria",
+    "whatsapp": "https://wa.me/2348144474065"
+  }
+}
