@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deecollections - Where Great Food Meets Great Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #8B4513;
+            --color-accent: #E8A87C;
+            --color-bg: #FDF6EC;
+            --color-text: #2C1810;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(253, 246, 236, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - 70px);
+            background: var(--color-bg);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu ul a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu ul a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 2rem;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.1s;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+
+        /* Services Section */
+        #services {
+            padding: 80px 2rem;
+            background: white;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-container h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background: var(--color-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .service-card p {
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 80px 2rem;
+            text-align: center;
+            position: relative;
+            color: white;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .contact-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .contact-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: -1;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-container p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+            color: var(--color-text);
+        }
+
+        .contact-details h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 0.8rem;
+            color: var(--color-text);
+        }
+
+        .contact-details a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-details a:hover {
+            color: var(--color-accent);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float::before {
+            content: "💬";
+            font-size: 28px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-container {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            #hero {
+                height: 80vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            #about,
+            #services,
+            #contact {
+                padding: 48px 1.5rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .about-content h2,
+            .services-container h2,
+            .contact-container h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float::before {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="logo">Deecollections</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <section id="hero">
+        <img src="https://images.pexels.com/photos/22710865/pexels-photo-22710865.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Deecollections" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Deecollections</h1>
+            <p>Welcome to Deecollections – your one-stop destination in Port Harcourt for delicious meals and fashionable clothing. Experience the perfect blend of culinary excellence and stylish fashion all under one roof.</p>
+            <a href="#contact" class="cta-button">Visit Us Today</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-container">
+            <img src="https://images.pexels.com/photos/7061421/pexels-photo-7061421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="About Deecollections" class="about-image">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>Deecollections is Port Harcourt's unique lifestyle destination that brings together two essentials – great food and great fashion. Located in the heart of Obio Akpor at No 24 Amaigbo Road, Mile 3 Diobu Ikokwu, we offer our customers a distinctive shopping and dining experience. Whether you're looking to enjoy a satisfying meal with family and friends or update your wardrobe with the latest fashion trends, Deecollections has you covered. Our restaurant serves a variety of delicious Nigerian and continental dishes prepared with fresh ingredients, while our clothing section features carefully curated fashion pieces for men, women, and children. We believe life is about enjoying the best of both worlds, and that's exactly what we deliver.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="services-container">
+            <h2>What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Restaurant Services</h3>
+                    <p>Our restaurant serves a delightful range of Nigerian favourites including jollof rice, pounded yam with assorted soups, grilled fish and chicken, as well as continental dishes. We cater to dine-in customers, takeaway orders, and special events. Every meal is prepared with care using quality ingredients to ensure your satisfaction.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Fashion Collection</h3>
+                    <p>Our clothing section features the latest trends in men's, women's, and children's fashion. From casual everyday wear to stylish outfits for special occasions, we stock quality pieces that suit the Nigerian lifestyle and climate. Whether you need corporate attire, traditional wear, or trendy streetwear, you'll find something perfect at Deecollections.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Special Events & Catering</h3>
+                    <p>We also provide catering services for your parties, meetings, and special occasions. Contact us to discuss your event needs and let us make your celebration memorable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <img src="https://images.pexels.com/photos/33662816/pexels-photo-33662816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Visit Deecollections" class="contact-image">
+        <div class="contact-overlay"></div>
+        <div class="contact-container">
+            <h2>Visit Us Today</h2>
+            <p>Ready to experience the best of food and fashion? Visit Deecollections today at our Port Harcourt location or get in touch with us.</p>
+            <div class="contact-details">
+                <h3>Address:</h3>
+                <p>No 24 Amaigbo Road, Mile 3 Diobu Ikokwu<br>
+                Obio Akpor, Port Harcourt<br>
+                Rivers State, Nigeria</p>
+                
+                <h3>Phone:</h3>
+                <p><a href="tel:+2348144474065">+234 814 447 4065</a></p>
+                
+                <h3>Email:</h3>
+                <p><a href="mailto:info@deecollections.ng">info@deecollections.ng</a></p>
+                
+                <h3>Opening Hours:</h3>
+                <p>Monday - Saturday: 9:00 AM - 8:00 PM<br>
+                Sunday: 12:00 PM - 6:00 PM</p>
+                
+                <p style="margin-top: 1.5rem;">Whether you want to dine with us, shop for new outfits, or place a catering order, we're here to serve you. Call us or visit our store today – we look forward to welcoming you!</p>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/2348144474065" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"></a>
+
+    <footer>
+        <p>&copy; 2025 Deecollections. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
